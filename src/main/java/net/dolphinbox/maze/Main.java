@@ -22,6 +22,8 @@ public class Main {
         int[][] startPoint = findStartPoint(maze, "S");
         System.out.println(startPoint[0][0] + ", " + startPoint[1][0]);
 
+        setArrayTrue(tried);
+
         setBIsFalse(maze, tried, "B");
 
         computeMaze(maze, tried, startPoint);
@@ -55,7 +57,7 @@ public class Main {
         for (int ver = 0; ver < maze.length; ver++) {
             for (int hor = 0; hor < maze[ver].length; hor++) {
                 if (maze[ver][hor].equals(barrierChar)) {
-                    tried[ver][hor] = true;
+                    tried[ver][hor] = false;
                 }
             }
         }
