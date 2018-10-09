@@ -7,7 +7,8 @@ public class Main {
         // Prints "Hello, World" to the terminal window.
         System.out.println("Hello, World");
 
-        String[][] maze = { { "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B" },
+        String[][] maze = {
+                { "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B" },
                 { "B", "O", "O", "O", "B", "O", "B", "O", "O", "O", "B" },
                 { "B", "O", "B", "O", "B", "O", "B", "O", "B", "B", "B" },
                 { "B", "O", "B", "O", "S", "O", "O", "O", "O", "O", "B" },
@@ -29,6 +30,10 @@ public class Main {
         computeMaze(maze, tried, startPoint);
 
         System.out.println(Arrays.deepToString(tried));
+
+    }
+
+    public static void converArrayToLinkList (String[][] maze, ) {
 
     }
 
