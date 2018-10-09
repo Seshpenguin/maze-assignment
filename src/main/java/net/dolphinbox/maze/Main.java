@@ -24,6 +24,8 @@ public class Main {
 
         setBIsFalse(maze, tried, "B");
 
+        System.out.println(Arrays.deepToString(tried));
+
         computeMaze(maze, tried, startPoint);
 
         System.out.println(Arrays.deepToString(tried));
@@ -34,7 +36,8 @@ public class Main {
         for (int ver = 0; ver < maze.length; ver++) {
             for (int hor = 0; hor < maze[ver].length; hor++) {
                 if (maze[ver][hor].equals(item)) {
-                    int[][] pos = { { hor }, { ver } };
+                    int[][] pos = { { ver }, { hor } };
+                    System.out.println("THE START BLOCK IS: " + maze[ver][hor]);
                     return pos;
                 }
             }
@@ -62,28 +65,90 @@ public class Main {
     }
 
     public static boolean computeMaze(String[][] maze, boolean[][] tried, int[][] startPoint) {
-        int hor = startPoint[0][0];
-        int ver = startPoint[1][0];
+        int ver = startPoint[0][0];
+        int hor = startPoint[1][0];
 
-        System.out.println("Called method: " + Arrays.deepToString(startPoint));
+        //System.out.println("Called method: " + Arrays.deepToString(startPoint));
 
-        System.out.println("Current Position: " + hor + ", " + ver);
+        System.out.println("Current Position: " + ver + ", " + hor);
 
         int numNodes = 0;
-        if (ver >= maze.length - 1 || hor >= maze[0].length - 1) {
+        if (ver >= maze.length - 1 || hor >= maze[0].length - 1) { // if we hit a wall
+            System.out.println("CANNOT TRAVSERSE WALL: " + ver + " " + hor);
             return false;
         }
+        if(maze[ver][hor].equals("X")){
+            return true;
+        };
         
         // check the up and down from the current node.
         int[][] startPointA = {
-            {ver},
+            {ver + 1}, // up 1
             {hor}
-        };
-        if(computeMaze(maze, tried, startPoint)){
-            
+        }; System.out.println("A");
+        if(tried[ver + 1][hor]){
+            numNodes++;
+            System.out.println("IN A");
+            if(computeMaze(maze, tried, startPointA)){
+                System.out.println("UP 1 is false @ " + ver + " " + hor);
+                tried[ver][hor] = false;
+                return false;
+            }
+        }
+        // Check one down
+        int[][] startPointB = {
+            {ver - 1}, // down 1
+            {hor}
+        }; System.out.println("B");
+        if(tried[ver - 1][hor]){
+            numNodes++;
+            System.out.println("IN B");
+            if(computeMaze(maze, tried, startPointB)){
+                System.out.println("DOWN 1 is false @ " + ver + " " + hor);
+                tried[ver][hor] = false;
+                return false;
+            }
+        }
+
+        // Check one right
+        int[][] startPointC = {
+            {ver}, // left 1
+            {hor + 1}
+        }; System.out.println("C");
+        if(tried[ver][hor + 1]){
+            numNodes++;
+            System.out.println("IN C");
+            if(computeMaze(maze, tried, startPointC)){
+                System.out.println("RIGHT 1 is false @ " + ver + " " + hor);
+                tried[ver][hor] = false;
+                return false;
+            }
+        }
+
+        // Check one left
+        int[][] startPointD = {
+            {ver}, // up 1
+            {hor - 1}
+        }; System.out.println("D");
+        if(tried[ver][hor - 1]){
+            numNodes++;
+            System.out.println("IN D");
+            if(computeMaze(maze, tried, startPointD)){
+                System.out.println("LEFT 1 is false @ " + ver + " " + hor);
+                tried[ver][hor] = false;
+                return false;
+            }
+        }
+
+        if(numNodes < 2){
+            return false;
         }
 
         return false;
         
+    }
+
+    public static void computeMazeDFS(L node){
+
     }
 }
