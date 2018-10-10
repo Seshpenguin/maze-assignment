@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class Main {
 
-    public static String[][] maze = { { "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B" },
+    public static String[][] maze = {
+                { "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B" },
                 { "B", "O", "O", "O", "B", "O", "B", "O", "O", "O", "B" },
                 { "B", "O", "B", "O", "B", "O", "B", "O", "B", "B", "B" },
                 { "B", "O", "B", "O", "S", "O", "O", "O", "O", "O", "B" },
@@ -12,21 +13,20 @@ public class Main {
                 { "B", "O", "B", "O", "O", "O", "O", "O", "O", "O", "B" },
                 { "B", "B", "B", "B", "B", "B", "B", "X", "B", "B", "B" } };
 
-    public static boolean debugMessages = true;
+    private static boolean debugMessages = true;
+
     public static void main(String[] args) {
+
         // Prints "Hello, World" to the terminal window.
         if(debugMessages) System.out.println("Hello, World");
 
         int[][] startPoint = findStartPoint(maze, "S");
-        System.out.println(startPoint[0][0] + ", " + startPoint[1][0]);
-
+        if(debugMessages) System.out.println(startPoint[0][0] + ", " + startPoint[1][0]);
 
         computeMaze(startPoint[0][0], startPoint[1][0]);
-
     }
 
-
-    public static int[][] findStartPoint(String[][] maze, String item) {
+    private static int[][] findStartPoint(String[][] maze, String item) {
         for (int ver = 0; ver < maze.length; ver++) {
             for (int hor = 0; hor < maze[ver].length; hor++) {
                 if (maze[ver][hor].equals(item)) {
@@ -39,7 +39,6 @@ public class Main {
         int[][] pos = { { 0 }, { 0 } };
         return pos;
     }
-
 
     public static boolean computeMaze(int ver, int hor) {
 
@@ -58,7 +57,7 @@ public class Main {
         maze[ver][hor] = "F";
 
         //
-        result = computeMaze(ver, hor)
+        result = computeMaze(ver, hor);
 
         return false;
     }
