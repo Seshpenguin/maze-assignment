@@ -24,6 +24,9 @@ public class Main {
         if(debugMessages) System.out.println(startPoint[0][0] + ", " + startPoint[1][0]);
 
         computeMaze(startPoint[0][0], startPoint[1][0]);
+        // We overwrote S, set it back before printing...
+        maze[startPoint[0][0]][startPoint[1][0]]
+
         System.out.println("This is the solution: (F is the path): ");
         System.out.println(Arrays.deepToString(maze));
     }
