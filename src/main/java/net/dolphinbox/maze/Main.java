@@ -1,6 +1,7 @@
 package net.dolphinbox.maze;
 
 import java.util.Arrays;
+import java.io.*;
 
 public class Main {
 
@@ -29,6 +30,11 @@ public class Main {
 
         System.out.println("This is the solution: (F is the path): ");
         System.out.println(Arrays.deepToString(maze));
+    }
+
+    public static String[][] readMazeFromFile(String fileName){
+        File fileObj = new java.io.File(fileName)
+        Scanner file = new Scanner(fileObj)
     }
 
     public static int[][] findStartPoint(String[][] maze, String item) {
