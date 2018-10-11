@@ -54,6 +54,8 @@ public class Main {
 
         // Start step logic
         boolean result;
+
+        //If it is not at the final node, set the current node to F
         maze[ver][hor] = "F";
 
         //
