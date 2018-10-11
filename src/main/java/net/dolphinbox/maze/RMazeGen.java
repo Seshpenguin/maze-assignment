@@ -3,7 +3,6 @@ import java.util.*;
 
 public class RMazeGen {
     public static Random rand = new Random();
-    public static boolean isDebuggerOn = true;
 
     public static String[][] randomMazeGen (int verSize, int horSize) {
         String[][] maze = new String[verSize][horSize];

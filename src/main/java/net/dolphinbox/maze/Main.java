@@ -1,8 +1,9 @@
 package net.dolphinbox.maze;
-
-import java.util.Arrays;
+import java.util.*;
 
 public class Main {
+
+    public static boolean debugMessages = true;
 
     public static String[][] maze = {
                 { "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B" },
@@ -13,7 +14,7 @@ public class Main {
                 { "B", "O", "B", "O", "O", "O", "O", "O", "O", "O", "B" },
                 { "B", "B", "B", "B", "B", "B", "B", "X", "B", "B", "B" } };
 
-    private static boolean debugMessages = true;
+
 
     public static void main(String[] args) {
 
