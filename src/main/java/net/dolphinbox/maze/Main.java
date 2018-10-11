@@ -26,7 +26,7 @@ public class Main {
         computeMaze(startPoint[0][0], startPoint[1][0]);
     }
 
-    private static int[][] findStartPoint(String[][] maze, String item) {
+    public static int[][] findStartPoint(String[][] maze, String item) {
         for (int ver = 0; ver < maze.length; ver++) {
             for (int hor = 0; hor < maze[ver].length; hor++) {
                 if (maze[ver][hor].equals(item)) {
