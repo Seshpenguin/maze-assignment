@@ -1,0 +1,10 @@
+4
+4
+B
+O
+S
+X
+BBBB
+BSOB
+BBOB
+BBXB
