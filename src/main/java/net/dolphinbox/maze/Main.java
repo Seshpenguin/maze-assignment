@@ -24,6 +24,8 @@ public class Main {
         if(debugMessages) System.out.println(startPoint[0][0] + ", " + startPoint[1][0]);
 
         computeMaze(startPoint[0][0], startPoint[1][0]);
+        System.out.println("This is the solution: (F is the path): ");
+        System.out.println(Arrays.deepToString(maze));
     }
 
     public static int[][] findStartPoint(String[][] maze, String item) {
@@ -43,23 +45,33 @@ public class Main {
     public static boolean computeMaze(int ver, int hor) {
 
         if (maze[ver][hor].equals("X")){
-            if(debugMessages) System.out.print("[DEBUG] Found End Point @ " + ver + ", " + hor);
+            if(debugMessages) System.out.println("[DEBUG] Found End Point @ " + ver + ", " + hor);
             return true;
         }
 
-        if(maze[ver][hor].equals("B") || maze[ver][hor].equals("F")){
-            if(debugMessages) System.out.print("[DEBUG] Found End Point @ " + ver + ", " + hor);
+        if(maze[ver][hor].equals("B") || maze[ver][hor].equals("-")){
+            if(debugMessages) System.out.println("[DEBUG] Found Block/used path Point @ " + ver + ", " + hor);
             return false;
         }
 
         // Start step logic
-        boolean result;
-
         //If it is not at the final node, set the current node to F
-        maze[ver][hor] = "F";
+        maze[ver][hor] = "-";
 
-        //
-        result = computeMaze(ver, hor);
+        // go up
+        if(computeMaze(ver + 1, hor)) return true; // if this chain found the finish, return true (go back up)
+
+        // go down
+        if(computeMaze(ver - 1, hor)) return true;
+
+        // go left
+        if(computeMaze(ver, hor - 1)) return true;
+
+        // go right
+        if(computeMaze(ver, hor + 1)) return true;
+
+        // Nodes < 2 (Hit dead end), reset this path node.
+        maze[ver][hor] = "O";
 
         return false;
     }
