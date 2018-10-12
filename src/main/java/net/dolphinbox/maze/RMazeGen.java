@@ -25,7 +25,7 @@ public class RMazeGen {
         maze[verLocalOfS][horLocalOfS] = "S";
         maze[verLocalOfX][horLocalOfX] = "X";
 
-        if (isDebuggerOn) for (int i = 0; i < verSize; i++) {
+        if (true) for (int i = 0; i < verSize; i++) {
             System.out.println(Arrays.toString(maze[i]));
         }
         return maze;
