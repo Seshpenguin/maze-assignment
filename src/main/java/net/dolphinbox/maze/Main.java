@@ -41,7 +41,10 @@ public class Main {
             }
         }
         if (option == 1) {
-            maze = RMazeGen.randomMazeGen(6, 6);
+            System.out.println("Please enter the vertical then horizontal size: ");
+            int userVer = Integer.parseInt(scan.nextLine());
+            int userHor = Integer.parseInt(scan.nextLine());
+            maze = RMazeGen.randomMazeGen(userVer, userHor);
         } else if (option == 2) {
             System.out.println("Please enter a file name to read from...");
             String filename = scan.nextLine();
@@ -58,8 +61,14 @@ public class Main {
         // We overwrote S, set it back before printing...
         maze[startPoint[0][0]][startPoint[1][0]] = startBlock;
 
-        System.out.println("This is the solution: (+ is the path): " + mazeResult);
-        printMaze();
+        if(mazeResult){
+            System.out.println("This is the solution: (+ is the path): ");
+            printMaze();
+        } else {
+            System.out.println("Sorry, this maze has no solution!");
+        }
+
+        
     }
 
     public static String[][] readMazeFromFile(String fileName) {
@@ -123,7 +132,7 @@ public class Main {
         if (maze[ver][hor].equals(exitBlock)) {
             if (debugMessages)
                 System.out.println("[DEBUG] Found End Point @ " + ver + ", " + hor);
-            maze[ver][hor] = "+";
+            //maze[ver][hor] = "+";
             return true;
         }
 
